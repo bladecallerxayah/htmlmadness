@@ -1,5 +1,8 @@
 .tpt-base {
   --accent: #a095c1;
+  --overlay: rgba(160,149,193,.80);
+  --gif: url('');
+  --bg: url('');
   --imageSize: 120px;
   --image-border-color: #fff;
   --leftSize: 250px;
@@ -14,25 +17,39 @@
   color: #ddd;
   background-color: #181818;
   border: 6px solid var(--accent);
-  border-spacing: 0;
   padding: 0 0 0 15px;
   margin: 10px auto;
   box-sizing: border-box;
-
   display: grid;
   grid-template-columns: var(--leftSize) 1fr;
 }
 
 .tpt-faixa-lateral {
+  position: relative;
   width: var(--leftSize);
-  background: var(--accent);
   text-align: center;
   color: var(--right-side-text);
   box-sizing: border-box;
+  overflow: hidden;
+}
+
+.tpt-faixa-lateral::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(var(--overlay), var(--overlay)),
+    var(--bg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  z-index: 0;
 }
 
 .tpt-lateral-interno {
   display: block;
+  position: relative;
+  z-index: 1;
   padding-top: 95px;
 }
 
@@ -111,20 +128,4 @@
 .tpt-credito a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (max-width: 650px) {
-  .tpt-base {
-    grid-template-columns: 1fr;
-    padding-left: 15px;
-  }
-
-  .tpt-faixa-lateral {
-    width: 100%;
-  }
-
-  .tpt-texto-principal {
-    display: block;
-    max-height: none;
-  }
 }
