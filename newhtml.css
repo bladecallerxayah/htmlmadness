@@ -3,6 +3,7 @@
   --overlay: rgba(160,149,193,.80);
   --gif: url('');
   --bg: url('');
+
   --imageSize: 120px;
   --image-border-color: #fff;
   --leftSize: 250px;
@@ -20,43 +21,38 @@
   padding: 0 0 0 15px;
   margin: 10px auto;
   box-sizing: border-box;
+
   display: grid;
   grid-template-columns: var(--leftSize) 1fr;
 }
 
 .tpt-faixa-lateral {
-  position: relative;
   width: var(--leftSize);
-  text-align: center;
-  color: var(--right-side-text);
-  box-sizing: border-box;
-  overflow: hidden;
-}
 
-.tpt-faixa-lateral::before {
-  content: "";
-  position: absolute;
-  inset: 0;
   background:
     linear-gradient(var(--overlay), var(--overlay)),
     var(--bg);
+
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  z-index: 0;
+  background-repeat: no-repeat;
+
+  text-align: center;
+  color: var(--right-side-text);
+  box-sizing: border-box;
 }
 
 .tpt-lateral-interno {
   display: block;
-  position: relative;
-  z-index: 1;
   padding-top: 95px;
 }
 
 .tpt-imagem {
   width: var(--imageSize);
   height: var(--imageSize);
+
   background: var(--gif) center/cover;
+
   background-clip: content-box;
   display: block;
   margin: 0 auto;
@@ -78,44 +74,55 @@
   margin-top: 15px;
   background: var(--right-quote-bg-color);
   color: var(--right-quote-text-color);
+
   font: 700 11px/100% Calibri, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
+
   padding: 5px;
 }
 
 .tpt-frase-lateral {
   display: block;
+
   font: 700 11px/100% Calibri, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
+
   padding: 5px;
   margin-bottom: 10px;
 }
 
 .tpt-texto-principal {
   max-height: var(--maxHeightRight);
+
   padding: 40px;
+  box-sizing: border-box;
+
   text-align: justify;
   white-space: pre-line;
   font: 11px/200% Verdana;
-  display: inline-block;
+  color: #ddd;
+
   overflow: auto;
-  box-sizing: border-box;
 }
 
 .tpt-frase {
   display: block;
   width: fit-content;
   max-width: 90%;
+
   padding: 3px 15px;
-  margin: 0 auto 20px;
+  margin: 0 auto 20px auto;
+
   background: var(--accent);
   color: var(--left-quote-color);
+
   text-transform: uppercase;
+  text-align: center;
+
   font: 700 10px/150% Calibri;
   letter-spacing: 1px;
-  text-align: center;
 }
 
 .tpt-credito {
@@ -128,4 +135,21 @@
 .tpt-credito a {
   color: inherit;
   text-decoration: none;
+}
+
+@media (max-width: 650px) {
+
+  .tpt-base {
+    grid-template-columns: 1fr;
+    padding-left: 15px;
+  }
+
+  .tpt-faixa-lateral {
+    width: 100%;
+  }
+
+  .tpt-texto-principal {
+    max-height: none;
+  }
+
 }
